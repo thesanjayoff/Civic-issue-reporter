@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { APP_NAME, APP_TAGLINE_EN } from "@/config/app";
 import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
+import { OfflineQueueSync } from "@/components/OfflineQueueSync";
 import "./globals.css";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -49,6 +50,7 @@ export default async function LocaleLayout({
       <body className="min-h-full flex flex-col bg-neutral-50 text-neutral-900">
         <NextIntlClientProvider messages={messages}>
           <ServiceWorkerRegister />
+          <OfflineQueueSync />
           {children}
         </NextIntlClientProvider>
       </body>
