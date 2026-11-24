@@ -4,6 +4,10 @@ import { AppHeader } from "@/components/AppHeader";
 import { sql } from "drizzle-orm";
 import { db } from "@/lib/db/client";
 
+// Reads the live wards table — must not be statically prerendered (a ward
+// added after a build would otherwise never show up without a rebuild).
+export const dynamic = "force-dynamic";
+
 export default async function WardsListPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);

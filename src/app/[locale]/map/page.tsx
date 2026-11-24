@@ -1,4 +1,9 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
+
+// Reads live category data from the DB on every request — must not be
+// statically prerendered at build time (a new category added after a build
+// would otherwise silently never appear in the map's filter dropdown).
+export const dynamic = "force-dynamic";
 import { AppHeader } from "@/components/AppHeader";
 import { ReportsMap } from "@/components/map/ReportsMap";
 import { CATEGORIES } from "@/lib/catalog/categories";
