@@ -20,6 +20,9 @@ export async function AppHeader() {
         <Link href="/wards" className="hidden sm:inline">
           {t("nav.wardDashboard")}
         </Link>
+        <Link href="/my-reports" className="hidden sm:inline">
+          {t("nav.myReports")}
+        </Link>
         <Link href="/emergency" className="font-semibold text-danger">
           {t("nav.emergency")}
         </Link>
