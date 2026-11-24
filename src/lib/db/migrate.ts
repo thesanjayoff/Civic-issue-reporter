@@ -12,10 +12,7 @@ import { config } from "dotenv";
 config({ path: ".env.local" });
 config();
 
-async function main() {
-  const databaseUrl = process.env.DATABASE_URL;
-  if (!databaseUrl) throw new Error("DATABASE_URL is not set");
-
+export async function runMigrations(databaseUrl: string) {
   const sql = postgres(databaseUrl, { max: 1 });
   try {
     await sql`CREATE TABLE IF NOT EXISTS _migrations (
@@ -47,7 +44,13 @@ async function main() {
   }
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+// Only run automatically when this file is executed directly (`tsx
+// src/lib/db/migrate.ts`), not when reset.ts imports runMigrations().
+if (process.argv[1]?.endsWith("migrate.ts")) {
+  const databaseUrl = process.env.DATABASE_URL;
+  if (!databaseUrl) throw new Error("DATABASE_URL is not set");
+  runMigrations(databaseUrl).catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+}

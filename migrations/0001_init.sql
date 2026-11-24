@@ -264,7 +264,7 @@ CREATE TABLE escalation_contacts (
   verification_status verification_status NOT NULL DEFAULT 'unverified',
   source_url text,
   source_date timestamptz,
-  checked_by varchar(80)
+  checked_by text
 );
 
 CREATE TABLE escalation_ladders (

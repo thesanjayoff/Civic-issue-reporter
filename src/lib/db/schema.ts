@@ -386,7 +386,7 @@ export const escalationContacts = pgTable("escalation_contacts", {
   verificationStatus: verificationStatusEnum("verification_status").default("unverified").notNull(),
   sourceUrl: text("source_url"),
   sourceDate: timestamp("source_date", { withTimezone: true }),
-  checkedBy: varchar("checked_by", { length: 80 }),
+  checkedBy: text("checked_by"),
 });
 
 export const escalationLadders = pgTable("escalation_ladders", {

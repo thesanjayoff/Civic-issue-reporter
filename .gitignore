@@ -37,6 +37,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# generated demo seed media (recreated by `npm run db:seed`)
+/public/seed-media/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
