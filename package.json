@@ -6,21 +6,44 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "db:up": "podman start ooru-kural-db 2>nul || podman run -d --name ooru-kural-db -e POSTGRES_PASSWORD=ooru_kural_dev -e POSTGRES_USER=ooru_kural -e POSTGRES_DB=ooru_kural -p 5432:5432 docker.io/postgis/postgis:16-3.4",
+    "db:migrate": "tsx src/lib/db/migrate.ts",
+    "db:seed": "tsx src/lib/db/seed.ts",
+    "db:reset": "tsx src/lib/db/reset.ts"
   },
   "dependencies": {
+    "ai": "^7.0.181",
+    "drizzle-orm": "^0.45.4",
+    "idb": "^8.0.4",
+    "jose": "^6.2.18",
+    "maplibre-gl": "^6.19.0",
     "next": "16.4.6",
+    "next-intl": "^4.16.0",
+    "postgres": "^4.1.1",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "4.3.3",
+    "@testing-library/jest-dom": "^8.0.0",
+    "@testing-library/react": "^16.3.3",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^6.3.0",
+    "dotenv": "^18.0.10",
+    "drizzle-kit": "^0.31.11",
     "eslint": "^9",
     "eslint-config-next": "16.4.6",
+    "jsdom": "^31.0.1",
     "tailwindcss": "4.3.3",
-    "typescript": "^5"
+    "tsx": "^4.23.15",
+    "typescript": "^5",
+    "vite": "^8.3.8",
+    "vitest": "^5.1.1"
   }
 }
