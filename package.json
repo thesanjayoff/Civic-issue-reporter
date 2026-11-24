@@ -12,7 +12,8 @@
     "db:up": "podman start ooru-kural-db 2>nul || podman run -d --name ooru-kural-db -e POSTGRES_PASSWORD=ooru_kural_dev -e POSTGRES_USER=ooru_kural -e POSTGRES_DB=ooru_kural -p 5432:5432 docker.io/postgis/postgis:16-3.4",
     "db:migrate": "tsx src/lib/db/migrate.ts",
     "db:seed": "tsx src/lib/db/seed.ts",
-    "db:reset": "tsx src/lib/db/reset.ts"
+    "db:reset": "tsx src/lib/db/reset.ts",
+    "icons:generate": "node scripts/generate-icons.mjs"
   },
   "dependencies": {
     "ai": "^7.0.181",

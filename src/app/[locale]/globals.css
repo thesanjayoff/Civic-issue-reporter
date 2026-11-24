@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f5f5f4;
+  --foreground: #171717;
+  --brand: #0f5132;
+  --brand-light: #16a34a;
+  --danger: #b91c1c;
+  --focus-ring: #1d4ed8;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand: var(--brand);
+  --color-brand-light: var(--brand-light);
+  --color-danger: var(--danger);
+  --font-sans: var(--font-geist-sans), var(--font-noto-tamil), sans-serif;
+  --font-mono: var(--font-geist-mono), var(--font-noto-tamil), monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+* {
+  min-width: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+/* WCAG 2.2 AA: a visible focus indicator on every interactive element,
+   not just the browser default (which some low-end-phone browsers suppress). */
+:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* Large touch targets per the accessibility requirement — 44px is the WCAG
+   2.2 AA minimum (2.5.8); buttons/links default to a comfortable 48px. */
+button,
+a.btn,
+input[type="checkbox"],
+input[type="radio"] {
+  min-height: 48px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
