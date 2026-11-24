@@ -40,6 +40,9 @@ yarn-error.log*
 # generated demo seed media (recreated by `npm run db:seed`)
 /public/seed-media/
 
+# user-uploaded report photos (local-disk storage stand-in, see src/lib/storage/local.ts)
+/public/uploads/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

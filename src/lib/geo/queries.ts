@@ -45,6 +45,7 @@ export interface NearbyReport {
   publicCode: string;
   categoryId: string;
   status: string;
+  descriptionEn: string | null;
   distanceM: number;
   lon: number;
   lat: number;
@@ -62,11 +63,12 @@ export async function nearbyOpenReports(
     public_code: string;
     category_id: string;
     status: string;
+    description_en: string | null;
     distance_m: number;
     lon: number;
     lat: number;
   }>(sql`
-    SELECT r.id, r.public_code, r.category_id, r.status,
+    SELECT r.id, r.public_code, r.category_id, r.status, r.description_en,
            ST_Distance(r.geom::geography, ST_SetSRID(ST_MakePoint(${lon}, ${lat}), 4326)::geography) AS distance_m,
            ST_X(r.geom) AS lon, ST_Y(r.geom) AS lat
     FROM reports r
@@ -83,6 +85,7 @@ export async function nearbyOpenReports(
     publicCode: r.public_code,
     categoryId: r.category_id,
     status: r.status,
+    descriptionEn: r.description_en,
     distanceM: Number(r.distance_m),
     lon: Number(r.lon),
     lat: Number(r.lat),
