@@ -9,6 +9,8 @@ const envSchema = z.object({
   BHASHINI_API_KEY: z.string().optional().default(""),
   SARVAM_API_KEY: z.string().optional().default(""),
   WHATSAPP_BUSINESS_TOKEN: z.string().optional().default(""),
+  WHATSAPP_PHONE_NUMBER_ID: z.string().optional().default(""),
+  WHATSAPP_VERIFY_TOKEN: z.string().optional().default(""),
   TELEGRAM_BOT_TOKEN: z.string().optional().default(""),
   OPEN311_ENABLED: z
     .string()
